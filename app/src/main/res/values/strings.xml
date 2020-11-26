@@ -1,0 +1,207 @@
+<resources>
+    <string name="app_name">Gymnasium</string>
+    <string name="facebook_login">Continue with facebook</string>
+    <string name="or">OR</string>
+    <string name="enter_email">Enter Your Email Address</string>
+    <string name="enter_password">Enter Your Password</string>
+    <string name="enter_mobile_number">Enter  Mobile No.</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="submit">Submit</string>
+    <string name="verify">Verify</string>
+    <string name="login">Login</string>
+    <string name="workout">Workout</string>
+    <string name="email">Email</string>
+    <string name="user_signup">User Sign Up</string>
+    <string name="save">Save</string>
+    <string name="one_month">1 MONTH</string>
+    <string name="three_month">3 MONTHS</string>
+    <string name="six_month">6 MONTHS</string>
+    <string name="one_year">1 YEAR</string>
+    <string name="one_monthfee">Rs.1,130</string>
+    <string name="three_monthfee">Rs.3,390</string>
+    <string name="Trainer_Qualification">Trainer Qualification</string>
+    <string name="six_monthfee">Rs.4,390</string>
+    <string name="trainer_age">Trainer Age</string>
+    <string name="Trainer_Address">Trainer Address</string>
+    <string name="one_yearfee">Rs.5,390</string>
+    <string name="Trainer_Email_address">Trainer Email address</string>
+    <string name="trainer_name">Trainer Name</string>
+    <string name="trainer_contact_number">Trainer Contact Number</string>
+    <string name="password">Password</string>
+    <string name="trainer_gender">Trainer Gender</string>
+    <string name="check_internetConnection">Please check your internet connection</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="upcoming_booking">Upcoming Booking</string>
+    <string name="register">Not a member? Join Now</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="name">Enter Your Name</string>
+    <string name="dob">Enter Your DOB</string>
+    <string name="profile_pic">Upload Your Profile Picture</string>
+    <string name="address">Enter Your Address</string>
+    <string name="confirm_password">Enter Your Confirm Password</string>
+    <string name="choose_gender">Choose Your Gender</string>
+    <string name="Blood_Group">Choose Your  Blood Group</string>
+    <string name="age">Age</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="membership_info">Membership Information</string>
+    <string name="attandance">Attandance</string>
+    <string name="attandance_history">Attandance History</string>
+    <string name="exercise_history">Exercise History</string>
+    <string name="gym_info">Gym Information</string>
+    <string name="scanning"> Scanner</string>
+    <string name="booking">Booking</string>
+    <string name="fat">Fat%</string>
+    <string name="other">Other</string>
+    <string name="trainer_available">Trainer Available</string>
+    <string name="start_session">Start Session</string>
+    <string name="scheduled">Scheduled</string>
+    <string name="log_out">LogOut</string>
+    <string name="Emergency_Contact">Emergency Contact</string>
+    <string name="search">Search </string>
+    <string name="session_info">Session Information</string>
+    <string name="contact_info">Contact Information</string>
+    <string name="select_time">Select Time</string>
+    <string name="booking_date">Date</string>
+    <string name="booking_time">Time</string>
+    <string name="user_name">Jyoti</string>
+    <string name="booked_for">You are booked for</string>
+    <string name="booking_instructionDetail">"1. The minimum age of the gym clients is 13 years.
+2. Any certificate entitling You to some discount is to be presented at
+the cash desk.
+3. Please, replace weights after having used them.
+4. Being barefoot in the gym is not permitted.
+5. Clean footwear for indoor exercises only is to be worn.
+No outdoor shoes permitted.
+6. The weight belts are property of the gym.
+Please, replace them after use.
+7. The maximum time of use of a treadmill or a cross-trainer is
+20 minutes.
+8. Please, give enough space to other gym users
+while You yourself are having a break.
+9. Please, avoid using odorous fragrances and use
+clean sportswear in the gym.
+10.Shaving body hair in the washing facilities is not permitted."</string>
+    <string name="booking_instruction"> Instructions</string>
+    <string name="oxygen">Oxygen</string>
+    <string name="covid_instruction">Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
+Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment.
+HOW IT SPREADS
+The virus that causes COVID-19 is mainly transmitted through droplets generated when an infected person coughs, sneezes, or exhales. These droplets are too heavy to hang in the air, and quickly fall on floors or surfaces.
+You can be infected by breathing in the virus if you are within close proximity of someone who has COVID-19, or by touching a contaminated surface and then your eyes, nose or mouth.</string>
+    <string name="covid_info">COVID-19 alerts</string>
+    <string name="temp">Temperature</string>
+    <string name="user_email">anjalics14.academic@gmail.com</string>
+    <string name="add_exercise">Add Excercise</string>
+    <string name="trainer_detail">Trainer Details</string>
+    <string name="booking_details">Booking Confirmation</string>
+    <array name="select_gender">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Transgender</item>
+
+    </array>
+    <array name="select_gym">
+        <item>Select Gym Category</item>
+        <item>The Membership Gym</item>
+        <item>The 24 hour access gym</item>
+        <item>CrossFit</item>
+        <item>Boot Camps</item>
+        <item>Training gyms</item>
+
+    </array>
+
+    <array name="select_bloodgroup">
+        <item>Select Blood Group</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings </string>
+    <string name="edit">Edit</string>
+    <string name="set_by">Set By</string>
+    <string name="tool">Tools</string>
+    <string name="notification">Notification</string>
+    <string name="profile">Profile</string>
+    <string name="tagline">Tagline</string>
+    <string name="vital_data">Vital Data</string>
+    <string name="menu_home">Home</string>
+    <string name="repeatation">Repeatation</string>
+    <string name="important_information">Important Information</string>
+    <string name="my_profile">My Profile</string>
+    <string name="welcome">Welcome to our Gym</string>
+    <string name="strname">Name</string>
+    <string name="remarks">Remarks</string>
+    <string name="qr_code">QR Code Attandance</string>
+    <string name="reports">Reports</string>
+    <string name="more">More</string>
+    <string name="gym_category">Gym Category</string>
+    <string name="gym_address">Gym Address</string>
+    <string name="gym_brand_type">Gym Brand Type</string>
+    <string name="gym_area">Gym Area</string>
+    <string name="gym_owner">Gym Owner</string>
+    <string name="gym_starting_date">Gym Starting Date</string>
+    <string name="gym_name">Name Of Gym</string>
+    <string name="strnMobile">Mobile No.</string>
+    <string name="str_dob">DOB</string>
+    <string name="str_address">Address</string>
+    <string name="bmi">BMI</string>
+    <string name="strn_email">Email</string>
+    <string name="str_gender">Gender</string>
+    <string name="since">Since</string>
+    <string name="strn_bloodgroup">Blood Group</string>
+    <string name="renewel_date">Renewel Date</string>
+    <string name="validity">Validity</string>
+    <string name="profile_membership">Membership</string>
+    <string name="membership">Membership Id</string>
+    <string name="type_membership">Membership Type</string>
+    <string name="level_membership">Level of Membership</string>
+    <string name="trainer_availability">Trainer Availability</string>
+    <string name="result_succeeded">Scanning done successfully</string>
+    <string name="result_failed">Scanning Failed</string>
+    <string name="ok_button">OK</string>
+    <string name="exercise">Exercise</string>
+    <string name="accounts">Accounts</string>
+
+    <string name="data_chat">Data Chat</string>
+    <string name="my_performance">My Performance</string>
+    <string name="challenges">Challenges/Goals</string>
+    <string name="diet_plan">Diet Plan</string>
+    <string name="animations_video_Guidance">Animations/Video Guidance</string>
+    <string name="operation">Operation</string>
+    <string name="no_button">NO</string>
+    <string name="want_exit">Do You Want to Exit ?</string>
+    <string name="cancel">Cancel</string>
+    <string name="about_us">About Us</string>
+    <string name="equipment_facilities">List of Equipment &amp; Facilities</string>
+    <string name="switch_gym">Switch Gym</string>
+    <string name="registration">Registration Form</string>
+    <string name="backup">Backup</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="exit">Exit</string>
+    <string name="logout">Do you want to Logout?</string>
+    <string name="registration_successfull">Your Registration has been done Successfully</string>
+    <string name="yes">Yes</string>
+    <string name="New_Bookings">New Bookings</string>
+    <string name="no">No</string>
+    <string name="result_failed_why">Something Went Wrong</string>
+    <string name="weight_profile">Weight</string>
+    <string name="weight">Enter Your Weight</string>
+    <string name="height">Enter Your Height</string>
+    <string name="height_profile">Height</string>
+    <string name="medical_history">Medical History</string>
+    <string name="technical">Technical</string>
+    <string name="confirm_booking">Do you want to confirm your booking</string>
+</resources>

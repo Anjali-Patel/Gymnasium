@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.AttandanceFragment">
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_gravity="start"
+            android:layout_marginBottom="10dp"
+            android:text="@string/covid_info"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:background="@color/colorRed"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:text="@string/covid_instruction"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <TableLayout
+        android:id="@+id/table_layout2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:text="@string/temp"
+                android:padding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_marginBottom="10dp"
+                android:id="@+id/temp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_background"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"/>
+
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:text="@string/oxygen"
+                android:padding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_marginBottom="10dp"
+                android:id="@+id/oxygen"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_background"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"/>
+        </TableRow>
+
+
+
+
+
+    </TableLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single" android:id="@+id/g1">
+        <item
+            android:id="@+id/menu_home"
+            android:icon="@drawable/white_home"
+            android:title="@string/menu_home"/>
+        <item
+            android:id="@+id/my_profile"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/my_profile"/>
+        <item
+            android:id="@+id/vital_data"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/vital_data"/>
+        <item
+            android:id="@+id/important_information"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/important_information"/>
+        <item
+            android:id="@+id/membership_info"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/membership_info" />
+
+    </group>
+    <group   android:checkableBehavior="single" android:id="@+id/g2">
+        <item
+            android:id="@+id/gym_info"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/gym_info" />
+      <!--  <item
+            android:id="@+id/scanning"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/scanning" />-->
+        <item
+            android:id="@+id/contact_info"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/contact_info" />
+        <item
+            android:id="@+id/session_info"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/session_info" />
+    </group>
+    <group   android:checkableBehavior="single" android:id="@+id/g3">
+    <item
+        android:id="@+id/equipment_facilities"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="@string/equipment_facilities" />
+    <item
+        android:id="@+id/about_us"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="@string/about_us" />
+    <item
+        android:id="@+id/upgrade"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="@string/upgrade" />
+    <item
+        android:id="@+id/backup"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="@string/backup" />
+    <item
+        android:id="@+id/switch_gym"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="@string/switch_gym" />
+
+    <item
+            android:id="@+id/log_out"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/log_out" />
+    </group>
+</menu>

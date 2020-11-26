@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+      android:id="@+id/menu_home"
+      android:icon="@drawable/white_home"
+      android:title="@string/menu_home" />
+    <item
+        android:id="@+id/booking"
+        android:icon="@drawable/booking_icon"
+        android:title="@string/booking" />
+
+   <item
+        android:id="@+id/qr_code"
+        android:icon="@drawable/qr_code_scanner"
+        android:title="@string/qr_code" />
+
+  <item
+      android:id="@+id/reports"
+      android:icon="@drawable/report"
+      android:title="@string/reports" />
+
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/more_icon"
+        android:title="@string/more" />
+
+<!--    <item-->
+<!--        android:id="@+id/notification"-->
+<!--        android:icon="@drawable/white_notification"-->
+<!--        android:title="@string/notification"/>-->
+
+
+  </menu>
