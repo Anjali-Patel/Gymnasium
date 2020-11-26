@@ -51,7 +51,6 @@ public void onBindViewHolder(@NonNull BookingHistoryAdapter.SubCategoryViewHolde
             context.startActivity(intent);
         }
     });
-//    Picasso.with(context).load("https://castercrew.com/media/pics/9_5d00d494c6776.jpg").into(holder.profile_pic);
 }
 
 

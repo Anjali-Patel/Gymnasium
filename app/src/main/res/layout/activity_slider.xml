@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Activities.SliderActivity">
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        >
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_marginBottom="0dp" />
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+    <EditText
+        android:layout_below="@+id/r1"
+        android:id="@+id/mobile_number"
+        android:padding="10dp"
+        android:hint="@string/enter_mobile_number"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="28dp"
+        android:background="@drawable/edit_background"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <Button
+        android:onClick="Login"
+        android:hint="@string/continue_with"
+        android:layout_below="@+id/mobile_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+        android:textAllCaps="false"
+        android:background="@drawable/button_view"
+        android:text="@string/login"/>
+</RelativeLayout>

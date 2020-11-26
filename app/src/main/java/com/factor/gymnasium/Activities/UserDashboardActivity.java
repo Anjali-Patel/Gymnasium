@@ -408,7 +408,7 @@ logoutDialog();
         b1.setOnClickListener(v -> {
             if (!preferances.getStringValue("MEMBER_ID","").equalsIgnoreCase("")) {
                 preferances.setValue("MEMBER_ID", "");
-                Intent normalIntent = new Intent(UserDashboardActivity.this, MainActivity.class);
+                Intent normalIntent = new Intent(UserDashboardActivity.this, SliderActivity.class);
                 startActivity(normalIntent);
                 dialog.dismiss();
             }

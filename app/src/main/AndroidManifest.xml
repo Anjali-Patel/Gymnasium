@@ -26,7 +26,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="com.razorpay">
-        <activity android:name=".Activities.BookingDetailsActivity"></activity>
+        <activity
+            android:name=".Activities.OtpActivity"
+            android:parentActivityName=".Activities.SliderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Activities.SliderActivity"
+            android:parentActivityName=".Activities.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".Activities.BookingDetailsActivity"
+            android:parentActivityName=".Activities.UserDashboardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.BookingConfirmation"
             android:parentActivityName=".Activities.UserDashboardActivity"
