@@ -16,9 +16,78 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/app_name"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
+
+
+                <FrameLayout
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:id="@+id/notification_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/noti_count"
+                        android:text=""
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:visibility="gone"
+                        tools:ignore="RtlCompat" />
+
+                    <ImageView
+                        android:id="@+id/notification"
+                        android:layout_width="25dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="5dp"
+                        app:srcCompat="@drawable/notification" />
+                </FrameLayout>
+
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
+<!--
+    <androidx.appcompat.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp">
+
+    </androidx.appcompat.widget.Toolbar>
+-->
 
     <include layout="@layout/content_main" />
 

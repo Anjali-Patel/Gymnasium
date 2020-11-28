@@ -6,8 +6,12 @@
     <string name="enter_password">Enter Your Password</string>
     <string name="enter_mobile_number">Enter  Mobile No.</string>
     <string name="enter_otp">Enter OTP</string>
+
     <string name="submit">Submit</string>
+    <string name="otp_text">A 6 Digit OTP(one time password) has been sent to your mobile number.Please enter the number to continue</string>
     <string name="verify">Verify</string>
+    <string name="not_receiveOTP">Didn\'t receive the OTP? <a href="Send Again">Send Again</a></string>
+    <string name="chane_number">OR  <a href="change the number">change the number</a></string>
     <string name="login">Login</string>
     <string name="workout">Workout</string>
     <string name="email">Email</string>
@@ -34,7 +38,8 @@
     <string name="pay_now">Pay Now</string>
     <string name="upcoming_booking">Upcoming Booking</string>
     <string name="register">Not a member? Join Now</string>
-    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password"><a href="Forgot Password?">Forgot Password?</a></string>
+    <string name="forgot_password_activity">Forgot Password</string>
     <string name="name">Enter Your Name</string>
     <string name="dob">Enter Your DOB</string>
     <string name="profile_pic">Upload Your Profile Picture</string>
@@ -94,7 +99,8 @@ You can be infected by breathing in the virus if you are within close proximity 
     <string name="user_email">anjalics14.academic@gmail.com</string>
     <string name="add_exercise">Add Excercise</string>
     <string name="trainer_detail">Trainer Details</string>
-    <string name="booking_details">Booking Confirmation</string>
+    <string name="booking_confirmation">Booking Confirmation</string>
+    <string name="booking_details">Booking Details</string>
     <array name="select_gender">
         <item>Select Gender</item>
         <item>Male</item>
@@ -143,6 +149,9 @@ You can be infected by breathing in the virus if you are within close proximity 
     <string name="important_information">Important Information</string>
     <string name="my_profile">My Profile</string>
     <string name="welcome">Welcome to our Gym</string>
+    <string name="offer_banner">Offer Banner</string>
+    <string name="testimonial_banner">Testimonial Banner</string>
+    <string name="ad_banner">Advertisement Banner</string>
     <string name="strname">Name</string>
     <string name="remarks">Remarks</string>
     <string name="qr_code">QR Code Attandance</string>
@@ -204,5 +213,5 @@ You can be infected by breathing in the virus if you are within close proximity 
     <string name="height_profile">Height</string>
     <string name="medical_history">Medical History</string>
     <string name="technical">Technical</string>
-    <string name="confirm_booking">Do you want to confirm your booking</string>
+    <string name="confirm_booking">Do you want to confirm your booking?</string>
 </resources>

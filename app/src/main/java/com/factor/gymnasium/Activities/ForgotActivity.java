@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.factor.gymnasium.Globals.GlobalItems;
 import com.factor.gymnasium.R;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class ForgotActivity extends AppCompatActivity {
@@ -28,8 +29,7 @@ FrameLayout progressBarHolder;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        toolbar_title = findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.forgot_password);
-
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.forgot_password_activity);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);

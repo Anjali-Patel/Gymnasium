@@ -33,7 +33,7 @@ public class BookingConfirmation extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        toolbar_title = findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.booking_details);
+        getSupportActionBar().setTitle(R.string.booking_confirmation);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);

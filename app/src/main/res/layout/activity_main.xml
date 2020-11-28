@@ -47,6 +47,8 @@
         android:src="@drawable/booking_logo"
         />
     <LinearLayout
+        android:visibility="gone"
+
         android:id="@+id/l1"
         android:weightSum="2"
         android:gravity="center"
@@ -87,6 +89,7 @@
 
     </LinearLayout>
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/l2"
         android:gravity="center"
         android:orientation="vertical"
@@ -127,6 +130,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:visibility="gone"
         android:layout_below="@+id/l2"
         android:id="@+id/or"
         android:layout_width="match_parent"

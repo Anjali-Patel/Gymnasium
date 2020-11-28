@@ -93,8 +93,10 @@ String member_id;
                             JSONObject jsonObject = new JSONObject(response);
                             member_id=jsonObject.getString("id");
                             preferances.setValue("MEMBER_ID",member_id);
+                            preferances.setValue("FULL_NAME",jsonObject.getString("full_name"));
+
                             Intent intent= new Intent(MainActivity.this,UserDashboardActivity.class);
-                            intent.putExtra("name",jsonObject.getString("full_name"));
+//                            intent.putExtra("name",jsonObject.getString("full_name"));
                             startActivity(intent);
                         } catch (JSONException e) {
                             e.printStackTrace();
