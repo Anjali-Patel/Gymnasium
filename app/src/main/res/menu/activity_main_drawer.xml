@@ -4,7 +4,7 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single" android:id="@+id/g1">
         <item
-            android:id="@+id/menu_home"
+            android:id="@+id/navmenu_home"
             android:icon="@drawable/white_home"
             android:title="@string/menu_home"/>
         <item

@@ -48,13 +48,15 @@ public class TrainerListAdapter extends RecyclerView.Adapter<TrainerListAdapter.
             @Override
             public void onClick(View view) {
              Intent intent= new Intent(context, TrainerDetailActivity.class);
+
+                    intent.putExtra("trainer_id",item.getTrainer_id());
              context.startActivity(intent);
             }
         });
         holder.selectTrainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"You have select trainer",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"You have selected trainer",Toast.LENGTH_LONG).show();
             }
         });
         Glide.with(context).load(item.getProfile_pic()).into(holder.trainer_logo);

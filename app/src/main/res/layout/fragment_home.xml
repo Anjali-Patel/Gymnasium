@@ -64,29 +64,105 @@
         android:layout_marginLeft="10dp"
         >
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-            <TextView
-                android:padding="10dp"
-                android:gravity="start"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                android:text="@string/upcoming_booking"
+        <FrameLayout
+            android:id="@+id/progressBarHolder"
+            android:animateLayoutChanges="true"
+            android:visibility="gone"
+            android:alpha="0.4"
+            android:background="#000000"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
                 />
-            <TextView
-                android:padding="10dp"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:text="No Booking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
+
+        </FrameLayout>
+
+
+            <TableLayout
+                android:id="@+id/table_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow>
+                    <TextView
+                        android:padding="10dp"
+                        android:gravity="start"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                        android:text="@string/upcoming_booking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/no_booking"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:text="@string/no_booking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:text="@string/gym_name"
+                        android:padding="5dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/gym_name"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"/>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/tv2"
+                        android:text="@string/time_stamp"
+                        android:padding="5dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/time_stamp"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"/>
+                </TableRow>
+
+
+                    <TextView
+                        android:id="@+id/cancel_booking"
+                        android:text="@string/cancel_booking"
+                        android:padding="10dp"
+                        android:gravity="end"
+                        android:layout_gravity="end"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+
+            </TableLayout>
 
     </androidx.cardview.widget.CardView>
     <TextView

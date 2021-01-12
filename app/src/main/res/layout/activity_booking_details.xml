@@ -13,4 +13,216 @@
         android:background="@color/colorPrimary"
         android:theme="@style/ToolbarTheme"
         />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        app:cardElevation="80dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:padding="5dp"
+        >
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:padding="10dp"
+                android:gravity="start"
+                android:textSize="16sp"
+                android:text="@string/membership"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:padding="5dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:text="P2011261951326153897406"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        app:cardElevation="80dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:padding="5dp"
+
+        >
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:padding="5dp"
+        android:gravity="start"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:text="@string/booked_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:padding="10dp"
+                android:gravity="start"
+               android:src="@drawable/booking_logo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                />
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:id="@+id/gym_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:id="@+id/gym_datetime"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginEnd="10dp"
+                android:gravity="bottom|end"
+                android:layout_marginStart="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:padding="5dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:text="@string/book_again"
+                    android:id="@+id/book_again"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:textColor="@color/colorPrimary"
+                    android:id="@+id/share"
+                    android:padding="5dp"
+                    android:text="@string/share"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+</LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        app:cardElevation="80dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:padding="5dp"
+
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:padding="5dp"
+                android:gravity="start"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:text="@string/booked_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:padding="10dp"
+                    android:gravity="start"
+                    android:src="@drawable/booking_logo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    />
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:padding="5dp"
+                        android:textSize="16sp"
+                        android:id="@+id/gym_name1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/gym_datetime1"
+                        android:padding="5dp"
+                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            app:cardElevation="80dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="5dp"
+            >
+
+
+                <TextView
+                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    android:textSize="18sp"
+                    android:text="Contact Gymnasium Support"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         app:tabIndicatorColor="@color/colorPrimary"
         android:background="@color/colorWhite"
+        app:tabTextAppearance="@style/TabLayoutStyle"
         app:tabGravity="fill"
         app:tabMode="fixed">
     </com.google.android.material.tabs.TabLayout>

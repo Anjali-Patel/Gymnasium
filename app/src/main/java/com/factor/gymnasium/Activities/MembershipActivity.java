@@ -157,11 +157,11 @@ public class MembershipActivity extends AppCompatActivity implements PaymentResu
     public void onPaymentError(int i, String s) {
         if(i== Checkout.NETWORK_ERROR){
             Toast.makeText(MembershipActivity.this, "Payment Failure: " + s, Toast.LENGTH_LONG).show();
-        }else if(i==Checkout.INVALID_OPTIONS){
+        }else if(i== Checkout.INVALID_OPTIONS){
             Toast.makeText(MembershipActivity.this, "Payment Failure: " + s, Toast.LENGTH_LONG).show();
-        }else if(i==Checkout.PAYMENT_CANCELED){
+        }else if(i== Checkout.PAYMENT_CANCELED){
             Toast.makeText(MembershipActivity.this, "Payment Failure: " + s, Toast.LENGTH_LONG).show();
-        }else if(i==Checkout.TLS_ERROR){
+        }else if(i== Checkout.TLS_ERROR){
             Toast.makeText(MembershipActivity.this, "Payment Failure: " + s, Toast.LENGTH_LONG).show();
 
         }

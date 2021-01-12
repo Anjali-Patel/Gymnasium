@@ -33,11 +33,9 @@ public class BookingFragment extends Fragment {
     private String mParam2;
 
     public BookingFragment() {
-        // Required empty public constructor
-    }
+     }
 
-
-    // TODO: Rename and change types and number of parameters
+     // TODO: Rename and change types and number of parameters
     public static BookingFragment newInstance(String param1, String param2) {
         BookingFragment fragment = new BookingFragment();
         Bundle args = new Bundle();

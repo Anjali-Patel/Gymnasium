@@ -3,6 +3,35 @@ package com.factor.gymnasium.Modal;
 public class Booking_HistoryModel {
     int logo;
     String name;
+    String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    String time;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    String status;
 
     public int getLogo() {
         return logo;

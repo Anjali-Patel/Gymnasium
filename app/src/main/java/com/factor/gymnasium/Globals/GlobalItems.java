@@ -9,7 +9,11 @@ import android.net.NetworkInfo;
 import android.util.Log;
 
 public class GlobalItems {
+    public static int status;
+    public static final String FULL_NAME = "full_name";
+    public static final String EMAIL_ID = "email_id";
     public static String DB_TABLE = "PTM";
+    public static String API_KEY="b541f5dd-23d8-11e9-9ee8-0200cd936042";
     @SuppressLint("StaticFieldLeak")
     public static Context global_ctx;
 

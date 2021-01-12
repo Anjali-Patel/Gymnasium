@@ -26,8 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         final ImageView im1 = (ImageView)findViewById(R.id.im1);
         final Animation zoomanimation = AnimationUtils.loadAnimation(getBaseContext(),R.anim.animated_logo);
         im1.startAnimation(zoomanimation);
-        zoomanimation.setAnimationListener(new Animation.AnimationListener()
-        {
+        zoomanimation.setAnimationListener(new Animation.AnimationListener() {
             public void onAnimationStart(Animation animation){
                 TimerTask timerTask = new TimerTask() {
                     @Override
@@ -35,13 +34,13 @@ public class SplashActivity extends AppCompatActivity {
                         if(!preferances.getStringValue("MEMBER_ID","").equalsIgnoreCase("")){
                             Intent intent =new Intent(SplashActivity.this,UserDashboardActivity.class);
                             startActivity(intent);
-                            SplashActivity.this.startActivity(intent);
                             SplashActivity.this.finish();
                         }else{
                             Intent intent =new Intent(SplashActivity.this,SliderActivity.class);
                             startActivity(intent);
-                            SplashActivity.this.startActivity(intent);
-                            SplashActivity.this.finish();
+                            finish();
+//                            SplashActivity.this.startActivity(intent);
+//                            SplashActivity.this.finish();
                         }
 
 //                                handler.removeCallbacks(this);

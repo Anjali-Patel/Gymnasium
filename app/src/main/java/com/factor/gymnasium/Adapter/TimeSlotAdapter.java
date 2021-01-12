@@ -20,18 +20,13 @@ import java.util.ArrayList;
 public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.SubCategoryViewHolder> {
     private String user_id;
     private Context context;
-
+    String time_slot;
     private ArrayList<TimeSlotModal> arrayList;
     ViewGroup viewGroup;
     private IOnItemClickListener iClickListener;
     public interface IOnItemClickListener {
-        void onItemClick(String text,String text1);
-
+        void onItemClick(String text);
     }
-
-
-
-
     public TimeSlotAdapter(Context context, ArrayList<TimeSlotModal> arrayList,IOnItemClickListener iClickListener) {
         this.user_id=user_id;
         this.iClickListener=iClickListener;
@@ -55,10 +50,10 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.SubCat
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String update_group_comment_reply="0";
+
                 int total_seats=10,booked_seats=1;
   if(total_seats>booked_seats){
-      iClickListener.onItemClick(item.getTime_slot(),update_group_comment_reply);
+      iClickListener.onItemClick(item.getTime_slot());
       Toast.makeText(context,"You are eligible for booking",Toast.LENGTH_LONG).show();
   }else{
       Toast.makeText(context,"This slot already booked",Toast.LENGTH_LONG).show();

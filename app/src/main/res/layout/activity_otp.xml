@@ -6,6 +6,25 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".Activities.OtpActivity">
+    <FrameLayout
+        android:id="@+id/progressBarHolder"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        android:alpha="0.4"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
+
     <ImageView
         android:padding="10dp"
         android:layout_width="100dp"
@@ -48,7 +67,7 @@
         <Button
             android:textStyle="bold"
             android:onClick="submit"
-            android:textAllCaps="false"
+            android:textAllCaps="true"
             android:text="@string/submit"
             android:layout_gravity="center"
             android:textColor="@color/colorWhite"
@@ -57,14 +76,15 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:padding="10dp"
-            android:background="@drawable/button_view"
-            android:layout_width="wrap_content"
+            android:background="@drawable/button_background"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
 
     </LinearLayout>
     <TextView
         android:padding="5dp"
+        android:onClick="sendAgain"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
@@ -75,6 +95,7 @@
     <TextView
         android:padding="5dp"
         android:textSize="14sp"
+        android:onClick="changeNumber"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"

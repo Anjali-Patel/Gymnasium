@@ -15,6 +15,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AlertDialogCustom" parent="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar.MinWidth">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -22,12 +23,11 @@
 
     <style name="ToolbarTheme"  parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="colorControlNormal">@color/colorWhite</item>
-        <!--<item name="android:minWidth">24dp</item>-->
-        <!--<item name="android:maxWidth">40dp</item>-->
-<!--        <item name="android:width">30dp</item>-->
-
     </style>
-
+    <style name="TabLayoutStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
     <style
         name="CalenderViewCustom" parent="Theme.AppCompat">
         <item name="colorAccent">@android:color/holo_blue_dark</item>

@@ -26,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import static com.factor.gymnasium.Globals.GlobalItems.openAct;
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 EditText mobile_number,otp,email,password;
 String str_mobile,str_otp,str_email,str_password;
 FrameLayout progressBarHolder;
-String member_id;
+String member_id,gym_id="5";
     Pinview pinview;
     SharedPreferenceUtils preferances;
     @Override
@@ -51,8 +52,9 @@ String member_id;
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_DENIED){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{Manifest.permission.CAMERA},101);
+                requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},101);
             }
+
         }
 //   otpView.setKeyListener();
     }
@@ -69,10 +71,10 @@ String member_id;
         }else if(str_password.equalsIgnoreCase("")){
             password.requestFocus();
             password.setError("Please enter password");
-        }else if(str_password.length()<5){
+        }/*else if(str_password.length()<5){
             password.requestFocus();
             password.setError("Minimum length of password should be 5");
-         }else if(!isValidEmail(str_email)){
+         }*/else if(!isValidEmail(str_email)){
             email.requestFocus();
             email.setError("Please enter valid email address");
         }else if(!GlobalItems.isInternetAvailable(MainActivity.this)){
@@ -91,12 +93,13 @@ String member_id;
                         progressBarHolder.setVisibility(View.GONE);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            member_id=jsonObject.getString("id");
+                            member_id=jsonObject.getString("user_id");
                             preferances.setValue("MEMBER_ID",member_id);
-                            preferances.setValue("FULL_NAME",jsonObject.getString("full_name"));
+                            preferances.setValue(GlobalItems.FULL_NAME,jsonObject.getString("full_name"));
+                            preferances.setValue(GlobalItems.EMAIL_ID,jsonObject.getString("email"));
+                            Toast.makeText(MainActivity.this, jsonObject.getString("message"),Toast.LENGTH_LONG).show();
 
                             Intent intent= new Intent(MainActivity.this,UserDashboardActivity.class);
-//                            intent.putExtra("name",jsonObject.getString("full_name"));
                             startActivity(intent);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -125,7 +128,7 @@ String member_id;
     }
 
     public void forgotPassword(View view) {
-        Intent intent= new Intent(MainActivity.this,ForgotActivity.class);
+        Intent intent= new Intent(MainActivity.this,EmailVerificationActivity.class);
         startActivity(intent);
     }
     public void submit(View view) {

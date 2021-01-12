@@ -6,15 +6,15 @@
       android:id="@+id/menu_home"
       android:icon="@drawable/white_home"
       android:title="@string/menu_home" />
+
+  <item
+      android:id="@+id/qr_code"
+      android:icon="@drawable/qr_code_scanner"
+      android:title="@string/qr_code" />
     <item
         android:id="@+id/booking"
-        android:icon="@drawable/booking_icon"
         android:title="@string/booking" />
 
-   <item
-        android:id="@+id/qr_code"
-        android:icon="@drawable/qr_code_scanner"
-        android:title="@string/qr_code" />
 
   <item
       android:id="@+id/reports"

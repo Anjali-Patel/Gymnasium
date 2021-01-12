@@ -1,7 +1,9 @@
 package com.factor.gymnasium.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.factor.gymnasium.Activities.BookingConfirmation;
 import com.factor.gymnasium.Activities.BookingDetailsActivity;
 import com.factor.gymnasium.Modal.Booking_HistoryModel;
+import com.factor.gymnasium.Modal.CancelHistoryModel;
 import com.factor.gymnasium.R;
 
 import java.util.ArrayList;
@@ -38,19 +41,26 @@ public BookingHistoryAdapter.SubCategoryViewHolder onCreateViewHolder(@NonNull V
         return new BookingHistoryAdapter.SubCategoryViewHolder(view);
         }
 
+@SuppressLint("SetTextI18n")
 @Override
 public void onBindViewHolder(@NonNull BookingHistoryAdapter.SubCategoryViewHolder holder, int position) {
     final Booking_HistoryModel item = arrayList.get(position);
     holder.gym_name.setText(item.getName());
-    holder.gym_date.setText(item.getDate_time());
+    holder.gym_date.setText(item.getDate() + " "+ item.getTime());
     Glide.with(context).load(item.getLogo()).into(holder.gym_logo);
     holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent= new Intent(context, BookingDetailsActivity.class);
+            intent.putExtra("date_timme",item.getDate() + " "+ item.getTime());
+            intent.putExtra("gym_name",item.getName());
             context.startActivity(intent);
         }
     });
+
+
+
+
 }
 
 

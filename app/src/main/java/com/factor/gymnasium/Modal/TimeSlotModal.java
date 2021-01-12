@@ -2,6 +2,16 @@ package com.factor.gymnasium.Modal;
 
 public class TimeSlotModal {
     String time_slot;
+
+    public String getShift_timeSlot() {
+        return shift_timeSlot;
+    }
+
+    public void setShift_timeSlot(String shift_timeSlot) {
+        this.shift_timeSlot = shift_timeSlot;
+    }
+
+    String shift_timeSlot;
     int booked_icon;
 
     public int getBooked_icon() {

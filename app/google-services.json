@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "147159057888",
+    "project_id": "gymnasium-29046",
+    "storage_bucket": "gymnasium-29046.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147159057888:android:0f36c6daf3ced458c81785",
+        "android_client_info": {
+          "package_name": "com.factor.gymnasium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147159057888-uf9sj6qebcqo3v9o4gotg8kc6j5gge3p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.factor.gymnasium",
+            "certificate_hash": "784db22baa63f7a29c51ae3e2d7c6cc7127c34d0"
+          }
+        },
+        {
+          "client_id": "147159057888-jpu41819erkngao3b41nt9n9vo9nn6rj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNkEJkCS5dOjnYvb44Ock2jKqw9pzlir0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147159057888-jpu41819erkngao3b41nt9n9vo9nn6rj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".Fragment.AttandanceFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/progressBarHolder"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        android:alpha="0.4"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
+
     <LinearLayout
+        android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginBottom="100dp"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.AttandanceFragment"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
         android:id="@+id/l1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_gravity="center"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -27,7 +55,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:layout_marginBottom="10dp"
             android:text="@string/covid_instruction"
             android:padding="5dp"
             android:layout_marginTop="5dp"
@@ -35,62 +62,113 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+        <androidx.cardview.widget.CardView
+            app:cardElevation="80dp"
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:padding="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            >
     <TableLayout
         android:id="@+id/table_layout2"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TableRow>
-
             <TextView
+                android:textColor="@color/colorBlack"
                 android:layout_marginBottom="10dp"
-                android:text="@string/temp"
-                android:padding="10dp"
+                android:text="@string/in_time"
+                android:padding="5dp"
+                android:textStyle="bold"
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <EditText
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
                 android:layout_marginBottom="10dp"
-                android:id="@+id/temp"
-                android:layout_weight="1"
-                android:padding="10dp"
+                android:text="@string/out_time"
+                android:padding="5dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/edit_background"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
 
         </TableRow>
-
         <TableRow>
-
             <TextView
                 android:layout_marginBottom="10dp"
-                android:text="@string/oxygen"
-                android:padding="10dp"
-                android:layout_marginTop="15dp"
+                android:text="@string/in_time"
+                android:id="@+id/in_time"
+                android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <EditText
+            <TextView
+                android:layout_marginLeft="5dp"
                 android:layout_marginBottom="10dp"
-                android:id="@+id/oxygen"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/edit_background"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"/>
+                android:text="@string/out_time"
+                android:padding="5dp"
+                android:id="@+id/out_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </TableRow>
-
-
-
-
 
     </TableLayout>
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_gravity="start"
+            android:layout_marginBottom="10dp"
+            android:text="@string/get_attandance"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:background="@color/colorRed"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-
+        <TextView
+            android:id="@+id/selectDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/edit_background"
+            android:padding="10dp"
+            android:text="@string/select_date" />
+        <Button
+            android:layout_gravity="start"
+            android:layout_marginBottom="10dp"
+            android:text="@string/view_attandance"
+            android:padding="10dp"
+            android:id="@+id/view_attandance"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:background="@color/colorRed"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/attandanceList"
+            android:layout_marginBottom="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 </LinearLayout>
+
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

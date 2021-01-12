@@ -1,5 +1,7 @@
 package com.factor.gymnasium.Fragment;
-
+import com.factor.gymnasium.Globals.BarcodeEncoder;
+import com.google.zxing.BarcodeFormat;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +9,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.factor.gymnasium.Globals.SharedPreferenceUtils;
 import com.factor.gymnasium.R;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +24,9 @@ import com.factor.gymnasium.R;
  * create an instance of this fragment.
  */
 public class Scanning extends Fragment {
-
+ImageView qr_code;
+    SharedPreferenceUtils preferances;
+String gym_name;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,9 +68,20 @@ public class Scanning extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_scanning, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view= inflater.inflate(R.layout.fragment_scanning, container, false);
+        preferances = SharedPreferenceUtils.getInstance(getContext());
+        gym_name= preferances.getStringValue("GYM_NAME","");
+        qr_code=view.findViewById(R.id.qr_code);
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(gym_name, BarcodeFormat.QR_CODE,200,200);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            qr_code.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+        return view;
     }
 }

@@ -82,7 +82,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1.5"
-            android:background="@drawable/button_view"
+            android:background="@drawable/button_background"
             android:layout_width="match_parent"
             android:layout_height="45dp"/>
 
@@ -247,7 +247,7 @@
         android:textSize="18sp"
         android:textColor="@color/colorWhite"
         android:textAllCaps="false"
-        android:background="@drawable/button_view"
+        android:background="@drawable/button_background"
         android:text="@string/login"/>
 
 
@@ -286,7 +286,7 @@
         android:layout_below="@+id/password_layout"
         android:layout_marginBottom="24dp"
         android:padding="12dp"
-        android:background="@drawable/button_view"
+        android:background="@drawable/button_background"
         android:textColor="@color/colorWhite"
         android:textAllCaps="false"
         android:textSize="16sp"

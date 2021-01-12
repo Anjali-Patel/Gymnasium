@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.factor.gymnasium.Globals.GlobalItems;
+import com.factor.gymnasium.Globals.SharedPreferenceUtils;
 import com.factor.gymnasium.R;
 
 import org.json.JSONException;
@@ -33,22 +34,27 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 public class RegistrationActivity extends AppCompatActivity {
 EditText name,mobile_number,email,dob,address,password,confirm_password,weight,height;
 String str_name,str_email,str_mobile_number,str_dob,str_address,str_password,str_confirm_password,str_gender,Selected_gymcategory,str_bloodGroup,str_medicalHistory;
 Spinner blood_group,gender,gym_category,user_medical_history;
 String atr_age,str_GymCategory="The Membership Gym";
-String imageUrl="",  currentDateandTime="";
-
+String imageUrl="",  currentDateandTime="",random_UserId;
+    SharedPreferenceUtils preferances;
+    String myResponse;
     ImageView img_camera_pic;
     DatePickerDialog picker;
     String str_height=null,str_weight=null;
     FrameLayout progressBarHolder;
+    int random_Id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        preferances = SharedPreferenceUtils.getInstance(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        toolbar_title = findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
@@ -58,21 +64,8 @@ String imageUrl="",  currentDateandTime="";
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        progressBarHolder=findViewById(R.id.progressBarHolder);
-        user_medical_history=findViewById(R.id.user_medical_history);
-        weight=findViewById(R.id.weight);
-        height=findViewById(R.id.height);
-//        img_camera_pic=findViewById(R.id.img_camera_pic);
-        name=findViewById(R.id.name);
-        mobile_number=findViewById(R.id.mobile_number);
-        email=findViewById(R.id.email);
-        dob=findViewById(R.id.dob);
-        address=findViewById(R.id.address);
-        password=findViewById(R.id.password);
-        confirm_password=findViewById(R.id.confirm_password);
-        blood_group=findViewById(R.id.blood_group);
-        gender=findViewById(R.id.gender);
-        gym_category=findViewById(R.id.gym_category);
+        initViews();
+
      /*   final String[] MedicalHistoryList = { "Select Medical History", "Yes", "No"};
         final String[] bloodGroupList = { "Select Blood Group", "A+", "A-", "B+", "B-","AB+","AB-","O-","O+"};
         final String[] GenderList = { "Select Gender", "Male", "Female", "Transgender"};
@@ -213,15 +206,34 @@ String imageUrl="",  currentDateandTime="";
         });*/
 
     }
-/*
-    public  void pic_image(View view){
-    CropImage.activity()
-            .setGuidelines(CropImageView.Guidelines.ON)
-            .start(RegistrationActivity.this);
+
+    private void initViews() {
+        progressBarHolder=findViewById(R.id.progressBarHolder);
+        user_medical_history=findViewById(R.id.user_medical_history);
+        weight=findViewById(R.id.weight);
+        height=findViewById(R.id.height);
+//        img_camera_pic=findViewById(R.id.img_camera_pic);
+        name=findViewById(R.id.name);
+        mobile_number=findViewById(R.id.mobile_number);
+        email=findViewById(R.id.email);
+        dob=findViewById(R.id.dob);
+        address=findViewById(R.id.address);
+        password=findViewById(R.id.password);
+        confirm_password=findViewById(R.id.confirm_password);
+        blood_group=findViewById(R.id.blood_group);
+        gender=findViewById(R.id.gender);
+        gym_category=findViewById(R.id.gym_category);
     }
-*/
+
+    /*
+        public  void pic_image(View view){
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .start(RegistrationActivity.this);
+        }
+    */
     public void Submit(View view) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-MM-HH:mm:ss", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss", Locale.getDefault());
          currentDateandTime = sdf.format(new Date());
             str_name=name.getText().toString().trim();
             str_email=email.getText().toString().trim();
@@ -268,7 +280,8 @@ String imageUrl="",  currentDateandTime="";
             } else if(!isValidEmail(str_email)){
                 email.requestFocus();
                 email.setError("password and confirm password not matching");
-            } /*else if(blood_group.getSelectedItem().toString().trim().equalsIgnoreCase("Select Blood Group")){
+            }
+            /* else if(blood_group.getSelectedItem().toString().trim().equalsIgnoreCase("Select Blood Group")){
                 Toast.makeText(this, "Please select blood group", Toast.LENGTH_LONG).show();
             } else if(gender.getSelectedItem().toString().trim().equalsIgnoreCase("Select Gender")){
                 Toast.makeText(this, "Please Select Gender", Toast.LENGTH_LONG).show();
@@ -276,23 +289,22 @@ String imageUrl="",  currentDateandTime="";
                 Toast.makeText(this, "Please select gym category", Toast.LENGTH_LONG).show();
             }else if(user_medical_history.getSelectedItem().toString().trim().equalsIgnoreCase("Select Medical History")){
                 Toast.makeText(this, "Please select medical history", Toast.LENGTH_LONG).show();
-            } */else if(!GlobalItems.isInternetAvailable(RegistrationActivity.this)){
+            }*/
+            else if(!GlobalItems.isInternetAvailable(RegistrationActivity.this)){
                 Toast.makeText(this, R.string.check_internetConnection, Toast.LENGTH_LONG).show();
             } else{
                 registerMember();
-
-            }
-
-    }
+            } }
     private void registerMember() {
+         random_Id=24;
+        random_Id=random_Id+1;
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url ="http://www.printacheque.com/gymapp/api/user/create.php";
+        String url ="http://www.printacheque.com/gymapp/api/user/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject object = new JSONObject();
         try {
-
-            object.put("gym_id","7");
-            object.put("user_id","1");
+            object.put("gym_id","5");
+            object.put("user_id",String.valueOf(random_Id));
             object.put("full_name",str_name);
             object.put("address", str_address);
             object.put("mobile_number",str_mobile_number);
@@ -301,7 +313,6 @@ String imageUrl="",  currentDateandTime="";
             object.put("access_level","member");
             object.put("status","1");
             object.put("created",currentDateandTime);
-
 //            object.put("gender",str_gender);
 //            object.put("DOB",str_dob);
 //            object.put("age",atr_age);
@@ -310,7 +321,6 @@ String imageUrl="",  currentDateandTime="";
 //            object.put("height",str_height);
 //            object.put("bloodgroup",str_bloodGroup);
 //            object.put("medical_history",str_medicalHistory);
-//
 //            object.put("created",currentDateandTime);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -321,10 +331,18 @@ String imageUrl="",  currentDateandTime="";
                     public void onResponse(JSONObject response) {
                         progressBarHolder.setVisibility(View.GONE);
                         try {
+                            myResponse=response.getString("message");
+                            preferances.setValue("name",str_name);
+                            preferances.setValue("address",str_address);
+                            preferances.setValue("mobile_number",str_mobile_number);
+                            preferances.setValue("email",str_email);
                             Toast.makeText(RegistrationActivity.this, response.getString("message"),Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent (RegistrationActivity.this,MainActivity.class);
+                            Intent intent= new Intent(RegistrationActivity.this, MainActivity.class);
                             startActivity(intent);
+
                         } catch (JSONException e) {
+                            progressBarHolder.setVisibility(View.GONE);
+                            Toast.makeText(RegistrationActivity.this, e.toString(),Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
                     }
@@ -332,14 +350,11 @@ String imageUrl="",  currentDateandTime="";
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressBarHolder.setVisibility(View.GONE);
-                Toast.makeText(RegistrationActivity.this, (CharSequence) error,Toast.LENGTH_LONG).show();
-
+                Toast.makeText(RegistrationActivity.this, "Member Already Exist",Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(jsonObjectRequest);
-
     }
-
     double ParseDouble(String strNumber) {
         if (strNumber != null && strNumber.length() > 0) {
             try {

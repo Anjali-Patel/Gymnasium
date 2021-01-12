@@ -12,7 +12,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.factor.gymnasium.Fragment.AboutUsFragment;
 import com.factor.gymnasium.Fragment.AttandanceFragment;
 import com.factor.gymnasium.Fragment.BackUpFragment;
@@ -25,14 +33,17 @@ import com.factor.gymnasium.Fragment.MembershipInformationFragment;
 import com.factor.gymnasium.Fragment.MoreFragment;
 import com.factor.gymnasium.Fragment.MyProfileFragment;
 import com.factor.gymnasium.Fragment.ReportFragment;
+import com.factor.gymnasium.Fragment.Scanning;
 import com.factor.gymnasium.Fragment.SchedulingFragment;
 import com.factor.gymnasium.Fragment.SessionInfoFragment;
 import com.factor.gymnasium.Fragment.SwitchFragment;
 import com.factor.gymnasium.Fragment.ToolsFragment;
 import com.factor.gymnasium.Fragment.UpgradeFragment;
 import com.factor.gymnasium.Fragment.VitalDataFragment;
+import com.factor.gymnasium.Globals.GlobalItems;
 import com.factor.gymnasium.Globals.SharedPreferenceUtils;
 import com.factor.gymnasium.R;
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -57,8 +68,20 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+
 public class UserDashboardActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
+    String str_inTime="",str_outTime="",strDate="",member_id="",gym_id;
+    String contents,str_gymName;
     ImageView notification;
     Fragment fragment = null;
     boolean b_home,b_personal,b_membership,b_attandance,b_equipment,b_booking,b_scheduling,b_workout,b_tools,b_gymInfo,b_more,b_report,b_qrCode,b_myprofile,b_vitaldata,b_importantInfo,b_contactInfo,b_session_info,b_aboutUs,b_upgrade,b_backup,b_switchGym;
@@ -69,13 +92,31 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
     BottomNavigationMenuView menuView;
     BottomNavigationItemView itemView;
     SharedPreferenceUtils preferances;
-     TextView toolbar_title;
+   public static   TextView toolbar_title;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(!GlobalItems.isInternetAvailable(Objects.requireNonNull(UserDashboardActivity.this))){
+            Toast.makeText(UserDashboardActivity.this,R.string.check_internetConnection,Toast.LENGTH_SHORT).show();
+        }else{
+            getGymTimeSessionInformation();
+        }
+    }
+
+    FloatingActionButton fab;
+    int a;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userdashboard);
+        gym_id="5";
         preferances = SharedPreferenceUtils.getInstance(this);
+        member_id=preferances.getStringValue("MEMBER_ID","");
+        str_gymName=preferances.getStringValue("GYM_NAME","");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-MM", Locale.getDefault());
+        strDate = sdf.format(new Date());
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         notification=findViewById(R.id.notification);
         toolbar_title=(TextView) findViewById(R.id.toolbar_title);
@@ -84,9 +125,10 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        toolbar_title.setText("Gymnasium");
+
+        toolbar_title.setText(R.string.app_name);
         loadHomeFragment();
-          FloatingActionButton fab = findViewById(R.id.fab);
+           fab = (FloatingActionButton) findViewById(R.id.fab);
         notification.setOnClickListener(view -> {
             Intent intent=new Intent(UserDashboardActivity.this,NotificationActivity.class);
             startActivity(intent);
@@ -101,9 +143,10 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
 
             }
         });
+
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        bottom_navigationView = (BottomNavigationView) findViewById(R.id.bottom_navigationView);
+        bottom_navigationView = findViewById(R.id.bottom_navigationView);
         bottom_navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         menuView = (BottomNavigationMenuView) bottom_navigationView.getChildAt(0);
         itemView = (BottomNavigationItemView) menuView.getChildAt(4);
@@ -121,15 +164,14 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.dashboard_fragment_container, new MyProfileFragment());
                 transaction.addToBackStack(null);
-                toolbar_title.setText(R.string.personal_information);
+                toolbar_title.setText(R.string.my_profile);
                 transaction.commit();
                 drawer.closeDrawers();
                 b_personal=true;
             }
         });
-        Intent intent=getIntent();
-        name.setText(preferances.getStringValue("FULL_NAME",""));
-        email.setText("anjalics14.academic@gmail.com");
+        name.setText(preferances.getStringValue(GlobalItems.FULL_NAME,""));
+        email.setText(preferances.getStringValue(GlobalItems.EMAIL_ID,""));
 //        Glide.with(UserDashboardActivity.this).load(R.drawable.anjali).into(UserImage);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(UserDashboardActivity.this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -141,8 +183,6 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
         transaction.addToBackStack(null);
         toolbar_title.setText(R.string.app_name);
         transaction.commit();
-
-
     }
 
     @Override
@@ -240,9 +280,53 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
             loadHomeFragment();
             b_equipment=false;
             toolbar_title.setText(R.string.app_name);
-        } else {
+        } else if(a==R.id.navmenu_home||bottom_navigationView.getSelectedItemId()==R.id.menu_home) {
             exitDialog();
         }
+    }
+    private void getGymTimeSessionInformation() {
+        String url = "http://printacheque.com/gymapp/api/Gym/read_one.php?gym_id="+gym_id;
+        //Again creating the string request
+        StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            String a=jsonObject.getString("gym_name").replace("null","");
+                            preferances.setValue("GYM_NAME",a);
+                            String time_slot=jsonObject.getString("timing").replace("null","");
+                            preferances.setValue("TIMESLOT",time_slot);
+                            preferances.setValue("SESSION_DURATION",jsonObject.getString("session_duration").replace("null",""));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(UserDashboardActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                        }
+
+
+                        //Toast.makeText(LoginActivity.this, userid, Toast.LENGTH_SHORT).show();
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(UserDashboardActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                        //  isLoading(false);
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(UserDashboardActivity.this);
+
+        requestQueue.add(jsonRequest);
     }
 
     private void exitDialog() {
@@ -277,8 +361,7 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_home:
-                b_home=true;
+            case R.id.navmenu_home:
                 fragment = new HomeFragment();
                 loadFragment(fragment);
                 drawer.closeDrawers();
@@ -357,7 +440,8 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
                 return true;
             case R.id.backup:
                 b_backup=true;
-                fragment = new BackUpFragment();
+                fragment = new Scanning();
+//                fragment = new BackUpFragment();
                 loadFragment(fragment);
                 toolbar_title.setText(R.string.backup);
                 drawer.closeDrawers();
@@ -399,7 +483,6 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
         b1.setText(getString(R.string.yes));
         Button b2 = dialog.findViewById(R.id.b2);
         b2.setText(getString(R.string.no));
-
         tv1.setText(R.string.logout);
         b1.setOnClickListener(v -> {
             if (!preferances.getStringValue("MEMBER_ID","").equalsIgnoreCase("")) {
@@ -427,7 +510,6 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.menu_home:
-                    b_home=true;
                     toolbar_title.setText(R.string.app_name);
                     fragment = new HomeFragment();
                     loadFragment(fragment);
@@ -477,11 +559,10 @@ private void  scanCode(){
 @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        IntentResult result =
-                IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (result != null) {
-            String contents = result.getContents();
-            if (contents != null) {
+             contents = result.getContents();
+            if (contents != null && contents.equalsIgnoreCase(str_gymName)) {
                 showDialog(R.string.result_succeeded, result.toString());
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -499,6 +580,51 @@ private void  scanCode(){
             }
         }
     }
+
+    private void attandanceInTimeVerification(String str_inTime) {
+//        progressBarHolder.setVisibility(View.VISIBLE);
+        String url ="http://printacheque.com/gymapp/api/attendance/create.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JSONObject object = new JSONObject();
+        try {
+            object.put("gym_id",gym_id);
+            object.put("user_id",member_id);
+            object.put("attendance_date",strDate);
+            object.put("in_time",str_inTime);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, object,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+//                        progressBarHolder.setVisibility(View.GONE);
+                        try {
+                            Toast.makeText(UserDashboardActivity.this, response.getString("message"),Toast.LENGTH_LONG).show();
+                            fragment = new AttandanceFragment();
+                            loadFragment(fragment);
+//                            dialog.dismiss();
+                            toolbar_title.setText("Attandance");
+                            b_attandance=true;
+                            preferances.setValue("PrefInTime",strDate+ " " +str_inTime);
+                        } catch (JSONException e) {
+//                            progressBarHolder.setVisibility(View.GONE);
+                            Toast.makeText(UserDashboardActivity.this, e.toString(),Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                progressBarHolder.setVisibility(View.GONE);
+                Toast.makeText(UserDashboardActivity.this, error.toString(),Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+
+    }
     private void showDialog(int title, CharSequence message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
@@ -507,14 +633,64 @@ private void  scanCode(){
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        fragment = new AttandanceFragment();
-                        loadFragment(fragment);
-                        dialog.dismiss();
-                        toolbar_title.setText("Attandance");
-                        b_attandance=true;
+   if(str_inTime.equals("")){
+       SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+       str_inTime = sdf.format(new Date());
+       attandanceInTimeVerification(str_inTime);
+   }else{
+       SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+       str_outTime = sdf.format(new Date());
+       attandanceOutTimeVerification(str_outTime);
+   }
+   dialog.dismiss();
                     }
                 });
 
         builder.show();
+    }
+
+    private void attandanceOutTimeVerification(String str_outTime) {
+        String url ="http://printacheque.com/gymapp/api/attendance/update.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JSONObject object = new JSONObject();
+        try {
+            object.put("user_id",member_id);
+            object.put("attendance_date",strDate);
+            object.put("out_time",str_outTime);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, object,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+//                        progressBarHolder.setVisibility(View.GONE);
+                        try {
+                            Toast.makeText(UserDashboardActivity.this, response.getString("message"),Toast.LENGTH_LONG).show();
+                            fragment = new AttandanceFragment();
+                            loadFragment(fragment);
+//                            dialog.dismiss();
+                            toolbar_title.setText("Attandance");
+                            b_attandance=true;
+                            preferances.setValue("PrefOutTime",strDate + " " +str_outTime);
+
+                        } catch (JSONException e) {
+//                            progressBarHolder.setVisibility(View.GONE);
+                            Toast.makeText(UserDashboardActivity.this, e.toString(),Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                progressBarHolder.setVisibility(View.GONE);
+                Toast.makeText(UserDashboardActivity.this,  error.toString(),Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+
+
     }
 }
