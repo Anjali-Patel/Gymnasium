@@ -203,9 +203,13 @@ You can be infected by breathing in the virus if you are within close proximity 
     <string name="accounts">Accounts</string>
     <string name="view_history">View History</string>
     <string name="data_chat">Data Chat</string>
+    <string name="new_versionstatement">A new version of this app is Available.</string>
     <string name="my_performance">My Performance</string>
+    <string name="want_update">Do you want to update?</string>
     <string name="challenges">Challenges/Goals</string>
+    <string name="play_storelink">https://play.google.com/store/apps/details?id=com.castercrewapp.castercrew&amp;hl=en_IN</string>
     <string name="diet_plan">Diet Plan</string>
+    <string name="Update">Update</string>
     <string name="animations_video_Guidance">Animations/Video Guidance</string>
     <string name="operation">Operation</string>
     <string name="no_button">NO</string>

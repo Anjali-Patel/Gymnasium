@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ import com.factor.gymnasium.Globals.GlobalItems;
 import com.factor.gymnasium.Globals.SharedPreferenceUtils;
 import com.factor.gymnasium.R;
 import com.goodiebag.pinview.Pinview;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
@@ -35,6 +38,13 @@ EditText mobile_number,otp,email,password;
 String str_mobile,str_otp,str_email,str_password;
 FrameLayout progressBarHolder;
 String member_id,gym_id="5";
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
     Pinview pinview;
     SharedPreferenceUtils preferances;
     @Override
@@ -57,6 +67,8 @@ String member_id,gym_id="5";
 
         }
 //   otpView.setKeyListener();
+
+
     }
     public void registerUser(View view) {
      Intent intent= new Intent(MainActivity.this,RegistrationActivity.class);
@@ -83,6 +95,7 @@ String member_id,gym_id="5";
             loginMember();
         }
     }
+
     private void loginMember() {
         progressBarHolder.setVisibility(View.VISIBLE);
         String url = "http://printacheque.com/gymapp/api/user/login.php?email="+str_email+"&"+"password="+str_password;

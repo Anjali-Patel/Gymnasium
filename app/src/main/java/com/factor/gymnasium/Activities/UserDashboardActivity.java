@@ -3,8 +3,12 @@ package com.factor.gymnasium.Activities;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -68,6 +72,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -80,6 +85,8 @@ import java.util.Objects;
 
 public class UserDashboardActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
+    String currentVersion, latestVersion;
+
     String str_inTime="",str_outTime="",strDate="",member_id="",gym_id;
     String contents,str_gymName;
     ImageView notification;
@@ -97,6 +104,8 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
     @Override
     protected void onStart() {
         super.onStart();
+        getVersion();
+
         if(!GlobalItems.isInternetAvailable(Objects.requireNonNull(UserDashboardActivity.this))){
             Toast.makeText(UserDashboardActivity.this,R.string.check_internetConnection,Toast.LENGTH_SHORT).show();
         }else{
@@ -111,6 +120,14 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userdashboard);
+        PackageManager pm = this.getPackageManager();
+        PackageInfo pInfo = null;
+        try {
+            pInfo =  pm.getPackageInfo(this.getPackageName(),0);
+        } catch (PackageManager.NameNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        currentVersion = pInfo.versionName;
         gym_id="5";
         preferances = SharedPreferenceUtils.getInstance(this);
         member_id=preferances.getStringValue("MEMBER_ID","");
@@ -327,6 +344,108 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
         RequestQueue requestQueue = Volley.newRequestQueue(UserDashboardActivity.this);
 
         requestQueue.add(jsonRequest);
+    }
+    private void getVersion() {
+        String url = " https://castercrew.com/mobile_app/version";
+        StringRequest jsonRequest = new StringRequest(com.android.volley.Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray json = new JSONArray(response);
+                    JSONObject jsonObject=json.getJSONObject(0);
+                    latestVersion= jsonObject.getString("version");
+                    Log.i("latestVersion",latestVersion);
+                    if(!currentVersion.equalsIgnoreCase(latestVersion)) {
+//                       showUpdateDialog();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+            }
+        },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+//                params.put("uid",uid);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonRequest);
+    }
+    private void showUpdateDialog(){
+        dialog = new Dialog(UserDashboardActivity.this, R.style.AlertDialogCustom);
+        dialog.setContentView(R.layout.custom_alert);
+        dialog.setCancelable(false);
+        TextView tv1 = dialog.findViewById(R.id.tv1);
+        TextView tv2 = dialog.findViewById(R.id.tv2);
+        tv2.setVisibility(View.VISIBLE);
+        tv1.setTextSize(12f);
+        Button b1 = dialog.findViewById(R.id.b1);
+        b1.setText(getString(R.string.cancel));
+        Button b2 = dialog.findViewById(R.id.b2);
+        b2.setText(getString(R.string.Update));
+        tv1.setText(R.string.want_update);
+        tv2.setText(R.string.new_versionstatement);
+        b1.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+        b2.setOnClickListener(v -> {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.castercrewapp.castercrew&hl=en_IN")));
+            dialog.dismiss();
+            dialog.dismiss();
+
+        });
+        try {
+            dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       /* final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.new_versionstatement);
+        builder.setMessage(R.string.want_update);
+        builder.setPositiveButton(R.string.Update, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.castercrewapp.castercrew&hl=en_IN")));
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setCancelable(false);
+        dialog = builder.show();*/
     }
 
     private void exitDialog() {
