@@ -44,6 +44,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 
 public class AttandanceFragment extends Fragment {
     String member_id,strDateofMonth="";
@@ -153,7 +155,7 @@ public class AttandanceFragment extends Fragment {
     private void getAttandanceInformation() {
         attandanceModelList.clear();
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/attendance/read_one.php?user_id="+member_id+"&"+"attendance_date="+strDateofMonth;
+        String url = MEMBER_BASE_URL+"attendance/read_one.php?user_id="+member_id+"&"+"attendance_date="+strDateofMonth;
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

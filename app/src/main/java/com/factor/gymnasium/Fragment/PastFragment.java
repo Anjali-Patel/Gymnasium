@@ -36,6 +36,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link PastFragment#newInstance} factory method to
@@ -108,7 +110,7 @@ ArrayList<Booking_HistoryModel> booking_historyModelList;
 
     private void getPastBooking() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/schedule/getprevschedule.php?member_id="+member_id;
+        String url = MEMBER_BASE_URL+"schedule/getprevschedule.php?member_id="+member_id;
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

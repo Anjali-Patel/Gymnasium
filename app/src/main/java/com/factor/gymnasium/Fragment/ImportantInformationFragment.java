@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ImportantInformationFragment#newInstance} factory method to
@@ -105,7 +107,7 @@ TextView Emergency_Contact,strname,strn_bloodgroup,medical_history;
 
     private void getImportantInformation() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/member/read_one.php?member_id="+member_id;
+        String url = MEMBER_BASE_URL+"member/read_one.php?member_id="+member_id;
         //Again creating the string request
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

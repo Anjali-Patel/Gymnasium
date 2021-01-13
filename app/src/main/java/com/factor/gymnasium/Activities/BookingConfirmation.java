@@ -39,6 +39,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 public class BookingConfirmation extends AppCompatActivity {
     RecyclerView trainerList;
     ArrayList<TrainerListModel> trainerModelsList;
@@ -141,7 +143,7 @@ TextView booking_date,booking_time;
     }
     private void bookingConfirmation() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url ="http://printacheque.com/gymapp/api/schedule/create.php";
+        String url =MEMBER_BASE_URL+"schedule/create.php";
         RequestQueue requestQueue = Volley.newRequestQueue(BookingConfirmation.this);
         JSONObject object = new JSONObject();
         try {

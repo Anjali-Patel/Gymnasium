@@ -38,6 +38,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CancelledFragment#newInstance} factory method to
@@ -103,7 +105,7 @@ FrameLayout progressBarHolder;
     private void getCancelBooking() {
 //        booking_historyModelsList.clear();
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/schedule/getprevschedule.php?member_id="+member_id;
+        String url = MEMBER_BASE_URL+"schedule/getprevschedule.php?member_id="+member_id;
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

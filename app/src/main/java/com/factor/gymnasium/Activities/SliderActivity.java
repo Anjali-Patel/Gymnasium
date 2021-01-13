@@ -36,6 +36,9 @@ import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+import static com.factor.gymnasium.Globals.GlobalItems.RECEIVE_OTP;
+
 public class SliderActivity extends AppCompatActivity {
     CircleIndicator indicator;
     ViewPager mPager;
@@ -74,7 +77,7 @@ String member_id="21";
 
     private void mobileVerification() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/user/mobileexists.php";
+        String url = MEMBER_BASE_URL+"user/mobileexists.php";
 
         RequestQueue requestQueue = Volley.newRequestQueue(SliderActivity.this);
         JSONObject object = new JSONObject();
@@ -118,7 +121,7 @@ String member_id="21";
         int n = 100000 + rnd.nextInt(900000);
         random_number=String.valueOf(n);
         Log.i("Random Number", String.valueOf(n));
-        String url = "http://2factor.in/API/V1/b541f5dd-23d8-11e9-9ee8-0200cd936042/ADDON_SERVICES/SEND/TSMS";
+        String url = RECEIVE_OTP;
 
         RequestQueue requestQueue = Volley.newRequestQueue(SliderActivity.this);
         JSONObject object = new JSONObject();try {

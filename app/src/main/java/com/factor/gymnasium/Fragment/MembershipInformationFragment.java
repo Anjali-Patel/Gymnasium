@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 
 public class MembershipInformationFragment extends Fragment {
     TextView membership,type_membership,since,renewel_date,validity,set_by;
@@ -88,7 +90,7 @@ public class MembershipInformationFragment extends Fragment {
 
     private void getMembershipInformation() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/member/read_one.php?member_id="+member_id;
+        String url = MEMBER_BASE_URL+"member/read_one.php?member_id="+member_id;
         //Again creating the string request
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

@@ -39,6 +39,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 public class UpcomingFragment extends Fragment {
     public static final String inputFormat = "HH:mm";
 //    public static String upcomimhgTime="";
@@ -178,7 +180,7 @@ String upcomimhgTime="";
         }
     }
     private void getCompletedBookig() {
-        String url ="http://printacheque.com/gymapp/api/schedule/update.php";
+        String url =MEMBER_BASE_URL+"schedule/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         JSONObject object = new JSONObject();
         try {
@@ -253,7 +255,7 @@ String upcomimhgTime="";
 
     private void cancelBooking() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url ="http://printacheque.com/gymapp/api/schedule/update.php";
+        String url =MEMBER_BASE_URL+"schedule/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         JSONObject object = new JSONObject();
         try {

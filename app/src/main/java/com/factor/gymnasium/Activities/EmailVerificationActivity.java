@@ -25,6 +25,8 @@ import org.json.JSONObject;
 
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 public class EmailVerificationActivity extends AppCompatActivity {
  EditText enter_email;
  FrameLayout progressBarHolder;
@@ -55,7 +57,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
     }
     private void emailVerification() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url ="http://printacheque.com/gymapp/api/user/emailexists.php";
+        String url =MEMBER_BASE_URL+"user/emailexists.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject object = new JSONObject();
         try {

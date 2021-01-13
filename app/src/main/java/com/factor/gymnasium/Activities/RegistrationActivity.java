@@ -36,6 +36,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 public class RegistrationActivity extends AppCompatActivity {
 EditText name,mobile_number,email,dob,address,password,confirm_password,weight,height;
 String str_name,str_email,str_mobile_number,str_dob,str_address,str_password,str_confirm_password,str_gender,Selected_gymcategory,str_bloodGroup,str_medicalHistory;
@@ -299,7 +301,7 @@ String imageUrl="",  currentDateandTime="",random_UserId;
          random_Id=24;
         random_Id=random_Id+1;
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url ="http://www.printacheque.com/gymapp/api/user/update.php";
+        String url =MEMBER_BASE_URL+"user/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject object = new JSONObject();
         try {

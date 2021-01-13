@@ -27,6 +27,8 @@ import org.json.JSONObject;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 public class ForgotActivity extends AppCompatActivity {
   EditText password,confirm_password;
    String str_paswword,str_confirm_password,str_email;
@@ -74,7 +76,7 @@ public class ForgotActivity extends AppCompatActivity {
 
     private void resetPassword() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url ="http://printacheque.com/gymapp/api/user/resetpassword.php";
+        String url =MEMBER_BASE_URL+"user/resetpassword.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject object = new JSONObject();
         try {

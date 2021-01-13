@@ -83,6 +83,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 public class UserDashboardActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     String currentVersion, latestVersion;
@@ -104,6 +106,7 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
     @Override
     protected void onStart() {
         super.onStart();
+
         getVersion();
 
         if(!GlobalItems.isInternetAvailable(Objects.requireNonNull(UserDashboardActivity.this))){
@@ -302,7 +305,7 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
         }
     }
     private void getGymTimeSessionInformation() {
-        String url = "http://printacheque.com/gymapp/api/Gym/read_one.php?gym_id="+gym_id;
+        String url = MEMBER_BASE_URL+"Gym/read_one.php?gym_id="+gym_id;
         //Again creating the string request
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -354,7 +357,10 @@ public class UserDashboardActivity extends AppCompatActivity  implements Navigat
                     JSONArray json = new JSONArray(response);
                     JSONObject jsonObject=json.getJSONObject(0);
                     latestVersion= jsonObject.getString("version");
-                    Log.i("latestVersion",latestVersion);
+                    String[] res = latestVersion.split("[.]", 1);
+
+                    Log.i("version", String.valueOf(res));
+
                     if(!currentVersion.equalsIgnoreCase(latestVersion)) {
 //                       showUpdateDialog();
                     }
@@ -702,7 +708,7 @@ private void  scanCode(){
 
     private void attandanceInTimeVerification(String str_inTime) {
 //        progressBarHolder.setVisibility(View.VISIBLE);
-        String url ="http://printacheque.com/gymapp/api/attendance/create.php";
+        String url =MEMBER_BASE_URL+"attendance/create.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject object = new JSONObject();
         try {
@@ -769,7 +775,7 @@ private void  scanCode(){
     }
 
     private void attandanceOutTimeVerification(String str_outTime) {
-        String url ="http://printacheque.com/gymapp/api/attendance/update.php";
+        String url =MEMBER_BASE_URL+"attendance/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject object = new JSONObject();
         try {

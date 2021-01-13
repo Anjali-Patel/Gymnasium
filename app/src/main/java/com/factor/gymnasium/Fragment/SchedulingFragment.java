@@ -68,6 +68,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import static com.factor.gymnasium.Activities.UserDashboardActivity.toolbar_title;
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -260,7 +261,7 @@ HorizontalScrollView horizontal_scroll;
     }
 
     private void getSchedule() {
-        String url = "http://printacheque.com/gymapp/api/schedule/getschedule.php?session_date="+strDate;
+        String url = MEMBER_BASE_URL+"schedule/getschedule.php?session_date="+strDate;
                 StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

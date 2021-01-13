@@ -47,7 +47,7 @@ import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 
-
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
 
 
 public class HomeFragment extends Fragment {
@@ -137,6 +137,7 @@ TextView gym_name,time_stamp,no_booking,cancel_booking,tv1,tv2;
 //       String upcomimhgTime=preferances.getStringValue("sessionTime","");
 //        String[] spliTtimeslot = upcomimhgTime.split("-");
 //        String abc=spliTtimeslot[0];
+
      /*    upcomimhgTime=preferances.getStringValue("sessionTime","");
         String[] spliTtimeslot = upcomimhgTime.split("-");
         compareStringOne= spliTtimeslot[0];
@@ -203,7 +204,7 @@ TextView gym_name,time_stamp,no_booking,cancel_booking,tv1,tv2;
         }
     }
     private void getCompletedBooking() {
-        String url ="http://printacheque.com/gymapp/api/schedule/update.php";
+        String url =MEMBER_BASE_URL+"schedule/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         JSONObject object = new JSONObject();
         try {
@@ -279,7 +280,7 @@ TextView gym_name,time_stamp,no_booking,cancel_booking,tv1,tv2;
 
     private void cancelBooking() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url ="http://printacheque.com/gymapp/api/schedule/update.php";
+        String url =MEMBER_BASE_URL+"schedule/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         JSONObject object = new JSONObject();
         try {

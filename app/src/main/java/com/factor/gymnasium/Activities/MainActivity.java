@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
 import static com.factor.gymnasium.Globals.GlobalItems.openAct;
 
 public class MainActivity extends AppCompatActivity {
@@ -98,7 +99,7 @@ String member_id,gym_id="5";
 
     private void loginMember() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/user/login.php?email="+str_email+"&"+"password="+str_password;
+        String url = MEMBER_BASE_URL+"user/login.php?email="+str_email+"&"+"password="+str_password;
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                   @Override

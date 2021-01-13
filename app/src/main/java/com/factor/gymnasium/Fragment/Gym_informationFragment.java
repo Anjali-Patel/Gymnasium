@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 
 public class Gym_informationFragment extends Fragment {
 FrameLayout progressBarHolder;
@@ -102,7 +104,7 @@ TextView gym_name,gym_address,gym_owner,gym_starting_date,gym_area,gym_brand_typ
 
     private void getGymInformation() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/Gym/read_one.php?gym_id="+gym_id;
+        String url = MEMBER_BASE_URL+"Gym/read_one.php?gym_id="+gym_id;
         //Again creating the string request
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

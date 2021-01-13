@@ -16,8 +16,8 @@ public class GlobalItems {
     public static String API_KEY="b541f5dd-23d8-11e9-9ee8-0200cd936042";
     @SuppressLint("StaticFieldLeak")
     public static Context global_ctx;
-
-    public static String MEMBER_BASE_URL="http://pacecon.net/gymapp/api/member/";
+    public static String RECEIVE_OTP="http://2factor.in/API/V1/b541f5dd-23d8-11e9-9ee8-0200cd936042/ADDON_SERVICES/SEND/TSMS";
+    public static String MEMBER_BASE_URL="http://printacheque.com/gymapp/api/";
     public static boolean isInternetAvailable(Context context)
        {
         NetworkInfo info = (NetworkInfo)((ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();

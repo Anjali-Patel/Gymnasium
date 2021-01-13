@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link VitalDataFragment#newInstance} factory method to
@@ -106,7 +108,7 @@ TextView height_profile,weight_profile,profile_membership,bmi,fat,other;
 
     private void getVitalDataInformation() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/member/read_one.php?member_id="+member_id;
+        String url = MEMBER_BASE_URL+"member/read_one.php?member_id="+member_id;
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

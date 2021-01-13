@@ -53,6 +53,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
+
 
 public class MyProfileFragment extends Fragment {
     Spinner blood_groupSpinner,SpinnergenderList;
@@ -501,7 +503,7 @@ FrameLayout progressBarHolder;
     }
     private void updateProfile() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url ="http://printacheque.com/gymapp/api/member/update.php";
+        String url =MEMBER_BASE_URL+"member/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         JSONObject object = new JSONObject();
         try {
@@ -545,7 +547,7 @@ FrameLayout progressBarHolder;
     }
     private void getProfileInformation() {
         progressBarHolder.setVisibility(View.VISIBLE);
-        String url = "http://printacheque.com/gymapp/api/member/read_one.php?member_id="+member_id;
+        String url = MEMBER_BASE_URL+"member/read_one.php?member_id="+member_id;
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                   @Override
