@@ -3,6 +3,8 @@ package com.factor.gymnasium.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import com.factor.gymnasium.R;
 
 
 public class ReportFragment extends Fragment {
+    Fragment fragment = null;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,6 +53,17 @@ public class ReportFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_report, container, false);
+        View view= inflater.inflate(R.layout.fragment_report, container, false);
+        fragment = new AttandanceFragment();
+        attendanceFragment(fragment);
+        return view;
     }
-}
+    private void attendanceFragment(Fragment fragment) {
+        FragmentManager childFragMan = getChildFragmentManager();
+        FragmentTransaction transaction = childFragMan.beginTransaction();
+            transaction.replace(R.id.dashboard_fragment_container,fragment );
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+
+    }
