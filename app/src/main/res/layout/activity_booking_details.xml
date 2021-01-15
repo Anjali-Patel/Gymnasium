@@ -13,7 +13,16 @@
         android:background="@color/colorPrimary"
         android:theme="@style/ToolbarTheme"
         />
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/again_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+    </FrameLayout>
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <LinearLayout

@@ -142,12 +142,13 @@ String upcomimhgTime="";
           /*  String[] spliTtimeslot2 = currentTime4.split(":");
             currentcompareStringOne1= spliTtimeslot2[0];
             currentcompareStringOne2= spliTtimeslot2[1];*/
-
+            if(dateCompareOne.equalsIgnoreCase(dateCompareTwo)){
     if(currentTime2==Integer.parseInt(compareStringOne1)){
         if(currentTime3==Integer.parseInt(compareStringTwo2)){
             getCompletedBookig();
         }
-    } }catch(Exception e){
+    }}
+        }catch(Exception e){
             e.printStackTrace();
             Log.i("TimeException",e.toString());
 

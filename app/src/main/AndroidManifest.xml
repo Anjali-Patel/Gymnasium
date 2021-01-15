@@ -28,14 +28,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="com.razorpay">
+        <activity android:name=".Activities.MyPerformanceActivity"></activity>
         <activity
             android:name=".Activities.EmailVerificationActivity"
             android:parentActivityName=".Activities.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Activities.PersonalProfileActivity"
             android:parentActivityName=".Activities.MainActivity"

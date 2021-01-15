@@ -158,15 +158,14 @@ TextView gym_name,time_stamp,no_booking,cancel_booking,tv1,tv2;
          /*   String[] spliTtimeslot2 = currentTime4.split(":");
             currentcompareStringOne1= spliTtimeslot2[0];
             currentcompareStringOne2= spliTtimeslot2[1];*/
+if(dateCompareOne.equalsIgnoreCase(dateCompareTwo)){
+    if(currentTime2==Integer.parseInt(compareStringOne1)){
+        if(currentTime3==Integer.parseInt(compareStringTwo2)){
+            getCompletedBooking();
+        }
 
-             if(currentTime2==Integer.parseInt(compareStringOne1)){
-                 if(currentTime3==Integer.parseInt(compareStringTwo2)){
-                     getCompletedBooking();
-                 }
-
-         }
-
-        }catch(Exception e){
+    }
+} }catch(Exception e){
             Log.i("TimeException",e.toString());
             e.printStackTrace();
         }

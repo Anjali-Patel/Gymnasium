@@ -1,6 +1,8 @@
 package com.factor.gymnasium.Fragment;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -48,6 +50,7 @@ import static com.factor.gymnasium.Globals.GlobalItems.MEMBER_BASE_URL;
 
 
 public class AttandanceFragment extends Fragment {
+    private OnFragmentInteractionListener mListener;
     String member_id,strDateofMonth="";
     SharedPreferenceUtils preferances;
     FrameLayout progressBarHolder;
@@ -151,7 +154,6 @@ public class AttandanceFragment extends Fragment {
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
     }
-
     private void getAttandanceInformation() {
         attandanceModelList.clear();
         progressBarHolder.setVisibility(View.VISIBLE);
@@ -205,6 +207,26 @@ public class AttandanceFragment extends Fragment {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(jsonRequest);
-
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ReportFragment.OnFragmentInteractionListener) {
+                mListener = (OnFragmentInteractionListener) context;
+            } else {
+                try {
+                    throw new RuntimeException(context.toString() + "must implement OnFragmentInteractionListener");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+    public interface OnFragmentInteractionListener {
+        void messageFromParentFragment(Uri uri);
     }
 }

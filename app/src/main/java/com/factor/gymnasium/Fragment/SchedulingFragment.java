@@ -150,6 +150,9 @@ HorizontalScrollView horizontal_scroll;
         timeSlot=preferances.getStringValue("TIMESLOT","");
         sessionDuration=preferances.getStringValue("SESSION_DURATION","");
         progressBarHolder=view.findViewById(R.id.progressBarHolder);
+        view_history=view.findViewById(R.id.view_history);
+        view_history.setVisibility(View.GONE);
+
         SimpleDateFormat t1 = new SimpleDateFormat("HH:mm", Locale.getDefault());
         currentTime1 = t1.format(new Date());
         SimpleDateFormat t2 = new SimpleDateFormat("HH", Locale.getDefault());
@@ -160,9 +163,8 @@ HorizontalScrollView horizontal_scroll;
         currentTime4=currentTime2+":"+currentTime3;
         currentTimeSlot=currentTime1+"-"+currentTime4;*/
         initViews();
-        view_history.setOnClickListener(view1 -> {
-            loadBookingFragment();
-        });
+
+
        /* iOnItemClickListener = new TimeSlotAdapter.IOnItemClickListener() {
             @Override
             public void onItemClick(String text) {
@@ -470,7 +472,6 @@ HorizontalScrollView horizontal_scroll;
         calendarView = view.findViewById(R.id.calendarView);
         time_slotList=view.findViewById(R.id.time_slotList);
         scheduled=view.findViewById(R.id.scheduled);
-        view_history=view.findViewById(R.id.view_history);
         select_time=view.findViewById(R.id.select_time);
         selectDate.setOnClickListener(view1 -> {
             selectDate();
@@ -478,12 +479,12 @@ HorizontalScrollView horizontal_scroll;
         });
     }
 
-    private void loadFragment(Fragment fragment) {
+   /* private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.dashboard_fragment_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
+    }*/
     @SuppressLint("ResourceAsColor")
     private void tiemPickerSlot() {
         Log.i("Session Time:",str_sessionTime);
@@ -2480,14 +2481,15 @@ HorizontalScrollView horizontal_scroll;
         time_slotList.setAdapter(timeSlotAdapter);
         timeSlotAdapter.notifyDataSetChanged()*/;
     }
-    private void loadBookingFragment() {
+  /*  private void loadBookingFragment() {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.dashboard_fragment_container, new BookingFragment());
+        transaction.replace(R.id.again_fragment_container, new BookingFragment());
         transaction.addToBackStack(null);
-        toolbar_title.setText(R.string.booking);
         transaction.commit();
-    }
+        toolbar_title.setText(R.string.booking);
+
+    }*/
 private void timeSlotDialog(){
     dialog = new Dialog(getContext(), R.style.AlertDialogCustom);
     dialog.setContentView(R.layout.time_slot_spinner_layout);

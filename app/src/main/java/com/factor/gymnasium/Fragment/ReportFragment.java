@@ -1,5 +1,7 @@
 package com.factor.gymnasium.Fragment;
 
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,13 +11,15 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.factor.gymnasium.R;
 
 
 public class ReportFragment extends Fragment {
     Fragment fragment = null;
-
+    private OnFragmentInteractionListener mListener;
+TextView my_performance;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,8 +32,6 @@ public class ReportFragment extends Fragment {
     public ReportFragment() {
         // Required empty public constructor
     }
-
-
     // TODO: Rename and change types and number of parameters
     public static ReportFragment newInstance(String param1, String param2) {
         ReportFragment fragment = new ReportFragment();
@@ -39,7 +41,6 @@ public class ReportFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,22 +49,61 @@ public class ReportFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_report, container, false);
-        fragment = new AttandanceFragment();
-        attendanceFragment(fragment);
+     /*   my_performance=view.findViewById(R.id.my_performance);
+        my_performance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new AttandanceFragment();
+                FragmentManager childFragMan = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = childFragMan.beginTransaction();
+                transaction.replace(R.id.dashboard_fragment_container,fragment );
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });*/
         return view;
     }
-    private void attendanceFragment(Fragment fragment) {
-        FragmentManager childFragMan = getChildFragmentManager();
-        FragmentTransaction transaction = childFragMan.beginTransaction();
-            transaction.replace(R.id.dashboard_fragment_container,fragment );
-            transaction.addToBackStack(null);
-            transaction.commit();
-        }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        my_performance=view.findViewById(R.id.my_performance);
+        my_performance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new AttandanceFragment();
+                FragmentManager childFragMan = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = childFragMan.beginTransaction();
+                transaction.replace(R.id.dashboard_fragment_container,fragment );
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+            if (context instanceof OnFragmentInteractionListener) {
+                mListener = (OnFragmentInteractionListener) context;
+            } else {
+                try {
+                    throw new RuntimeException(context.toString() + "must implement OnFragmentInteractionListener");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+    public interface OnFragmentInteractionListener {
+        void messageFromParentFragment(Uri uri);
+    }
     }
